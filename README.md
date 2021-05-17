@@ -10,17 +10,18 @@ COMO EMPEZAR:
 
   Pre-requisitos: 
 
-	- Navegador web para visualizar página
-
-	lo demás está incluido en las carpetas llamadas assests, las cuales incluyen las tipografías e iconos necesarios
+	- Django, instalado general o entorno virtual
 
   Instalación : 
 
 	1. git clone https://github.com/Elsapallo/Landing-page.git
 
+
 USO
 
-1. Ingresar al acceso directo clonado y luego al archivo html nombrada "index"
+1. Escribir en el cmd  \Dlunga>python manage.py runserver
+
+1.1 vaya a su navegador y busque http://127.0.0.1:8000/
 
 2. Una vez en la página hacer click en plataforma o simplemente bajar mediante scroll
 
