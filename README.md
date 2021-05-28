@@ -95,3 +95,10 @@ RECONOCIMIENTO
 - Responsive Tools (github.com/ajlkn/responsive-tools)
 
 - SCSS
+
+Migraciónes
+
+0001 = creación Post
+0002 = creación Miembro
+0003 = atributo Institución a Miembro
+0004 = apellido y contraseña
