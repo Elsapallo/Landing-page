@@ -21,7 +21,6 @@
 
 		<!-- Header -->
 			<section id="header">
-
 				<div class="inner">
 					<span> <img src="{% static 'css/images/logo3.png' %}"></span>
 					<h1><strong>Junt@s</strong> <br />
@@ -29,26 +28,11 @@
 					<p>Tenemos conciencia y empatía con los problemas de la sociedad,<br />
 						movilizándonos para generar soluciones.</p>
 
-                    {% if f == "no" %}
-                    <br><br>
-                     <div class="alert alert-danger" role="alert">
-                      {{ mensaje }}
-                        </div>
-                    {% elif f == "si" %}
-                        <br><br>
-                        <div class="alert alert-success" role="alert">
-                             {{ mensaje }}
-                        </div>
-                    {% else %}
-                        <br><br><br><br>
-                    {% endif %}
-
-					<br><br>
+					<br><br><br><br><br><br><br><br>
 					<ul class="actions special">
 						<li><a href="#footer" class="button scrolly">Plataforma</a></li>
 
 					</ul>
-
 
 				</div>
 			</section>
@@ -59,7 +43,6 @@
 				<div class="container">
 					<header class="major">
 						<h2>Ya eres miembro?</h2>
-
 					</header>
 					<p>Ingrese a la plataforma de la comunidad.</p>
 					<ul class="actions special">
@@ -72,11 +55,11 @@
 
 						<li><a href="https://www.fundacioncolunga.org/proposito/" class="button wide">Aprender más</a></li>
 					</ul>
-
+                    <p><strong>{{ mensaje }}</strong></p>
                     <!-- Login -->
 					<div class="collapse" id="collapseExample">
 						<div class="card card-body">
-                        {%  if mensaje == "Contraseña incorrecta" %}
+                        {%  if mensaje == "acceso denegado" %}
 
                                <form action="/Login/" method="GET">
 							<div class="form-floating mb-3">
@@ -98,7 +81,7 @@
                              <p>Está ingresando: <strong>{{ query }}</strong></p>
 
 
-                        {% elif mensaje == "Correo incorrecto" %}
+                        {% elif mensaje == "correo incorrecto" %}
                                       <form action="/Login/" method="GET">
 							<div class="form-floating mb-3">
 								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                             nombre@organización.cl">
@@ -116,7 +99,7 @@
 							</div>
 							<input type="submit" class="button wide primary" value="Iniciar Sesión">
                                 </form>
-
+                             <p>Está ingresando: <strong>{{ query }}</strong></p>
 
                         {% else %}
                             <form action="/Login/" method="GET">
@@ -152,71 +135,36 @@
                             </div>
                              <div class="offcanvas-body">
                                    <div class="card card-body">
-                                       <form action="/Recuperacion/" method="email">
+                                       <form action="/Recuperacion/" method="POST">
+                                           <p>{{ remensaje }} {{ pin }</p>
+
 							            <div class="form-floating mb-3">
-							            	<input type="text" name="nuser" class="form-control" id="floatingInput" placeholder="                           nombre@organización.cl">
-							            	<label for="floatingInput">Correo electrónico</label>
-							            </div>
-                                           <div id="passwordHelpBlock" class="form-text">
-                                            Por seguridad, se enviará un PIN a su correo
-                                            </div><br>
-                                           <!-- Login
-							            <div class="form-floating">
-							            	<input type="password" name="new_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
-							            	<label for="floatingPassword">Nueva Contraseña</label>
-                                            <div id="passwordHelpBlock" class="form-text">
-                                            Para su seguridad, ingrese una contraseña de más de 8 carácteres incluyendo números
+                                             <div class="spinner-border text-success" role="status">
+                                         <span class="visually-hidden">Loading...</span>
+                                               </div><br>
+							            	<input type="password" name="seed" class="form-control" id="floatingInput" placeholder="XXXXX">
+							            	<label for="floatingInput">Código</label>
+					                        <div id="passwordHelpBlock" class="form-text">
+                                            Por favor, ingrese el código que fue enviado a su correo
                                             </div>
 
 							            </div>
-                                        <div class="form-floating">
-							            	<input type="password" name="re_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
-							            	<label for="floatingPassword">Repita Contraseña</label><br>
 
-							            </div> -->
 
-                                        <input type="submit" class="button wide primary" value="Obtener código" > <br>
-
-                                       <button class="button wide" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Ingresar Código</button>
+                                        <input type="submit" class="button wide primary" value="Recuperar contraseña">
                                        </form>
-                                   </div>
-                             </div>
-                        </div>
-                                          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                             <div class="offcanvas-header">
-                                                  <h5 id="offcanvasRightLabel">Ingreso nueva contraseña</h5>
-                                                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                             </div>
-                                         <div class="offcanvas-body">
-                                             <form action="/Re_contraseña/" method="GET">
-                                                 <div class="form-floating mb-3">
-							            	<input type="email" name="reuser" class="form-control" id="floatingInput" placeholder="                           nombre@organización.cl">
-							            	<label for="floatingInput">Correo electrónico</label>
-							            </div>
-                                                  <div class="form-floating">
 
-							            	<input type="password" name="new_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
-							            	<label for="floatingPassword">Nueva Contraseña</label>
+                                       {% if seed == uwu %}
 
-							            </div>
-                                        <div class="form-floating">
-							            	<input type="password" name="re_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
-							            	<label for="floatingPassword">Repita Contraseña</label>
+                                             usuario.contraseña = recontraseña
+                                             usuario.save()
+                                       {% endif %}
 
-							            </div><br>
 
-							            	<input type="password" name="pin" class="form-control" id="floatingInput" placeholder="XXXXX" minlength="5">
-                                                 <label for="floatingInput">PIN</label>
-							            	<br>
-
-                                                   <input type="submit" class="button wide primary" value="Recuperar contraseña" >
-                                                    </form>
                                        </div>
                                     </div>
 					    	    </div>
-
-					            </div>
-                            </div>
+					        </div>
 			        	</div>
                     </div>
 

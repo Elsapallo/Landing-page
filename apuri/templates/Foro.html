@@ -9,33 +9,21 @@
 
 </head>
 <body >
-<div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
 
-            <ul>
-                <li><a href="#" class="active">Anuncios
-                  </a></li>
-                <li><a href="#">Calendario
-                   </a></li>
-                <li><a href="#" class="active">Reuniones
-                   </a></li>
-                <li><a href="#">Foro
-                   </a></li>
-                <li><a href="#">Organizaciones
-                    </a></li>
-                <li><a href="index.html">Inicio</a></li>
-            </ul>
+    <h1>Foro bastardo</h1>
 
-    </div>
-</div>
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+    <form action="/Foro/" method="POST">{% csrf_token %}
 
-<img src="images/xd.jpg" style="margin-left: 500px">
+        <p>Asunto: <input type="text" name="asunto"></p>
+
+        <p>Email: <input type="text" name="email"></p>
+
+        <p>Mensaje: <textarea name="mensaje" rows="15" cols="45"></textarea> </p>
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
 </body>
 </html>

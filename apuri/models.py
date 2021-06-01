@@ -27,9 +27,10 @@ class Miembro(models.Model):
     contraseña = models.CharField(max_length=15, null=True)
     cel = models.CharField(max_length=15)
     institucion = models.CharField(max_length=50, null=True) #default = "invitado"
+    pin = models.IntegerField(max_length=15, default=00000)
 
     def __str__(self):
-        todo = [self.nombre, self.apellido_pat, self.apellido_mat, self.email, self.institucion]
-        return todo
+
+        return self.nombre
 
 
