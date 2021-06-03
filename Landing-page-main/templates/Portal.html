@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	info Plantilla:
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load static %}
+<html>
+	<head>
+		<title>Colunga</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'css/images/logo1.ico' %}">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+        <script src="https://kit.fontawesome.com/626dd6f811.js" crossorigin="anonymous"></script>
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+
+				<div class="inner">
+					<span> <img src="{% static 'css/images/logo3.png' %}"></span>
+					<h1><strong>Junt@s</strong> <br />
+					 <a href="https://www.fundacioncolunga.org/"> para transformar</a>.</h1>
+					<p>Tenemos conciencia y empatía con los problemas de la sociedad,<br />
+						movilizándonos para generar soluciones.</p>
+
+                    {% if f == "no" %}
+                    <br><br>
+                     <div class="alert alert-danger" role="alert">
+                      {{ mensaje }}
+                        </div>
+                    {% elif f == "si" %}
+                        <br><br>
+                        <div class="alert alert-success" role="alert">
+                             {{ mensaje }}
+                        </div>
+                    {% else %}
+                        <br><br><br><br>
+                    {% endif %}
+
+					<br><br>
+					<ul class="actions special">
+						<li><a href="#footer" class="button scrolly">Plataforma</a></li>
+
+					</ul>
+
+
+				</div>
+			</section>
+
+
+
+			<section id="four" class="main style special">
+				<div class="container">
+					<header class="major">
+						<h2>Ya eres miembro?</h2>
+
+					</header>
+					<p>Ingrese a la plataforma de la comunidad.</p>
+					<ul class="actions special">
+						<li><p>
+							<a class="button wide primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+								Acceder
+							</a>
+
+						</p>
+
+						<li><a href="https://www.fundacioncolunga.org/proposito/" class="button wide">Aprender más</a></li>
+					</ul>
+
+                    <!-- Login -->
+					<div class="collapse" id="collapseExample">
+						<div class="card card-body">
+                        {%  if mensaje == "Contraseña incorrecta" %}
+
+                               <form action="/Login/" method="GET">
+							<div class="form-floating mb-3">
+								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                              nombre@organización.cl">
+								<label for="floatingInput">Correo electrónico</label>
+
+							</div>
+
+							<div class="form-floating">
+								    <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" ">
+								    <label for="floatingPassword">Contraseña </label>
+                                <div id="passwordHelpBlock" class="form-text " style="color: red ; font-weight: bold" >
+                                             Ups! Ha ingresado una contraseña incorrecta
+                                </div>
+                            </div> <br>
+
+							<input type="submit" class="button wide primary" value="Iniciar Sesión">
+                                </form>
+                             <p>Está ingresando: <strong>{{ query }}</strong></p>
+
+
+                        {% elif mensaje == "Correo incorrecto" %}
+                                      <form action="/Login/" method="GET">
+							<div class="form-floating mb-3">
+								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                             nombre@organización.cl">
+								<label for="floatingInput">Correo electrónico</label>
+                                 <div id="passwordHelpBlock" class="form-text" style="color: red ; font-weight: bold">
+                                            Ups! Ha ingresado un correo incorrecto
+                                            </div>
+
+							</div>
+
+							<div class="form-floating">
+								    <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" ">
+								    <label for="floatingPassword">Contraseña</label> <br>
+
+							</div>
+							<input type="submit" class="button wide primary" value="Iniciar Sesión">
+                                </form>
+
+
+                        {% else %}
+                            <form action="/Login/" method="GET">
+							<div class="form-floating mb-3">
+								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                              nombre@organización.cl">
+								<label for="floatingInput">Correo electrónico</label>
+
+							</div>
+
+							<div class="form-floating">
+								    <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+								    <label for="floatingPassword">Contraseña</label> <br>
+
+							</div>
+							<input type="submit" class="button wide primary" value="Iniciar Sesión">
+                                </form>
+
+
+                        {% endif %}
+
+
+
+                        <!-- RECUPERACIÓN DE CONTRASEÑA -->
+                         <a class="button wide" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                               ¿Olvidó su contraseña?
+								<span class="icon solid fa-key"></span>
+                         </a>
+
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Recuperación de contraseña</h5>
+                                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                             <div class="offcanvas-body">
+                                   <div class="card card-body">
+                                       <form action="/Recuperacion/" method="email">
+							            <div class="form-floating mb-3">
+							            	<input type="text" name="nuser" class="form-control" id="floatingInput" placeholder="                           nombre@organización.cl">
+							            	<label for="floatingInput">Correo electrónico</label>
+							            </div>
+                                           <div id="passwordHelpBlock" class="form-text">
+                                            Por seguridad, se enviará un PIN a su correo
+                                            </div><br>
+                                           <!-- Login
+							            <div class="form-floating">
+							            	<input type="password" name="new_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+							            	<label for="floatingPassword">Nueva Contraseña</label>
+                                            <div id="passwordHelpBlock" class="form-text">
+                                            Para su seguridad, ingrese una contraseña de más de 8 carácteres incluyendo números
+                                            </div>
+
+							            </div>
+                                        <div class="form-floating">
+							            	<input type="password" name="re_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+							            	<label for="floatingPassword">Repita Contraseña</label><br>
+
+							            </div> -->
+
+                                        <input type="submit" class="button wide primary" value="Obtener código" > <br>
+
+                                       <button class="button wide" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Ingresar Código</button>
+                                       </form>
+                                   </div>
+                             </div>
+                        </div>
+                                          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                             <div class="offcanvas-header">
+                                                  <h5 id="offcanvasRightLabel">Ingreso nueva contraseña</h5>
+                                                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                             </div>
+                                         <div class="offcanvas-body">
+                                             <form action="/Re_contraseña/" method="GET">
+                                                 <div class="form-floating mb-3">
+							            	<input type="email" name="reuser" class="form-control" id="floatingInput" placeholder="                           nombre@organización.cl">
+							            	<label for="floatingInput">Correo electrónico</label>
+							            </div>
+                                                  <div class="form-floating">
+
+							            	<input type="password" name="new_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+							            	<label for="floatingPassword">Nueva Contraseña</label>
+
+							            </div>
+                                        <div class="form-floating">
+							            	<input type="password" name="re_pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+							            	<label for="floatingPassword">Repita Contraseña</label>
+
+							            </div><br>
+
+							            	<input type="password" name="pin" class="form-control" id="floatingInput" placeholder="XXXXX" minlength="5">
+                                                 <label for="floatingInput">PIN</label>
+							            	<br>
+
+                                                   <input type="submit" class="button wide primary" value="Recuperar contraseña" >
+                                                    </form>
+                                       </div>
+                                    </div>
+					    	    </div>
+
+					            </div>
+                            </div>
+			        	</div>
+                    </div>
+
+
+
+			    </section>
+
+
+
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="https://twitter.com/fundcolunga" class="icon brands alt fa-twitter" style="color: #4cee63;font-size: 30px"><span class="label">Twitter</span></a></li>
+					<li><a href="https://www.facebook.com/fundacioncolunga/" class="icon brands alt fa-facebook-f" style="color: #4cee63;font-size: 30px"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/fundacioncolunga/" class="icon brands alt fa-instagram" style="color: #4cee63 ;font-size: 30px"><span class="label"  >Instagram</span></a></li>
+					<li><a href="https://www.youtube.com/channel/UCsFiZXAvH-v3_I44CmguVDA" class="icon brands fa-youtube" style="color: #4cee63;font-size: 30px"><span class="label">Youtube</span></a></li>
+					<li><a href="https://www.flickr.com/photos/147267947@N06/albums" class="icon brands fa-flickr" style="color: #4cee63;font-size: 30px"><span class="label">Flickr</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Colunga </li><li>Design: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: greenyellow"> Elsapallo</a></li>
+				</ul>
+			</section>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'js/browser.min.js' %}"></script>
+			<script src="{% static 'js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>
